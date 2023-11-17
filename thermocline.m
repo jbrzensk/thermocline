@@ -54,8 +54,8 @@ figure(3)
 plot(temp,depth,'b','LineWidth',4); grid on;
 xlim([TMIN-5 TMAX + 5]);
 ylim([-DEPTH 0+5]);
-xlabel('Temperature [c]','Interpreter','latex');
-ylabel('Depth [m]','Interpreter','latex');
+xlabel('Temperature [c]');
+ylabel('Depth [m]');
 title('Thermocline Example Plot');
 
 end
