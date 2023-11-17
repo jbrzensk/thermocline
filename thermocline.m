@@ -1,6 +1,6 @@
 function [ temp, depth ] = thermocline( TMIN, TMAX, DEPTH, CENTER_OF_GRADIENT, THICKNESS, NPOINTS )
-%% thermocline function:
-% Generates a temperature gradient that mimicks a thermocline.
+%% Thermocline function:
+% Generates a temperature gradient that mimics a thermocline.
 %
 % INPUT : 
 %           TMIN : minimum temperature
@@ -24,6 +24,9 @@ function [ temp, depth ] = thermocline( TMIN, TMAX, DEPTH, CENTER_OF_GRADIENT, T
 %           meters, and using 3000 points, the command would be:
 %
 %           [temp, depth] = thermocline(10,25,1000,200,0.001,3000);
+%
+% BY: Jared Brzenski
+% San Diego State University
 %
 %%
 if (nargin == 5 )
