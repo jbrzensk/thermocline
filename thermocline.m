@@ -9,8 +9,9 @@ function [ temp, depth ] = thermocline( TMIN, TMAX, DEPTH, CENTER_OF_GRADIENT, T
 %           CENTER_OF_GRADIENT : center of transition region ( +meters )
 %           
 %           optional-->
-%           THICKNESS : Thickness of the transition region, 0.1 - 0.001,
-%                       default=0.01, play with this.
+%           THICKNESS : Thickness of the transition region, this is based
+%                       on an estimate of the standard deviation.
+%                       Default = DEPTH/10;
 %           NPOINTS : Number of points of output desired, default=1000;
 %
 % OUTPUT :
