@@ -23,7 +23,7 @@ function [ temp, depth ] = thermocline( TMIN, TMAX, DEPTH, CENTER_OF_GRADIENT, T
 %           transition width of 100 meters, a maximum depth of 1000
 %           meters, and using 3000 points, the command would be:
 %
-%           [temp, depth] = thermocline(10,25,1000,200,0.001,3000);
+%           [temp, depth] = thermocline(10,25,1000,200,100,3000);
 %
 % BY: Jared Brzenski
 % San Diego State University
@@ -33,14 +33,16 @@ if (nargin == 5 )
     NPOINTS = 1000;
 elseif ( nargin == 4 )
     NPOINTS = 1000;
-    THICKNESS = 0.01;
+    THICKNESS = DEPTH/10; % 1/10th the depth
 end
 
 % Settign up the variables for the erf
 depth = linspace(0,1,NPOINTS);
 mu =  (DEPTH-CENTER_OF_GRADIENT)/DEPTH ;
 sigma2 = THICKNESS;
-denom = sqrt(2*sigma2);
+sigma2 = THICKNESS / DEPTH;    % Scale the thickness
+sigma2 = sigma2 / 2.3548 / 2 ; % FWHM estimate of SD
+denom = sigma2 * sqrt(2);      % sigma * sqrt(2)
 
 % temperature values calculated here
 temp = TMIN + ((TMAX-TMIN)/2)*(1 + erf( (depth - mu)/denom));
